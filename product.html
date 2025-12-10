@@ -1,944 +1,889 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-  <meta name="description" content="tfi Zindabad Product - Premium Telugu Cinema Merchandise">
-  <meta name="theme-color" content="#0a0a0a">
-  <title>Product - tfi Zindabad | For The Fans. By The Fans.</title>
-
-  <!-- Preconnect for performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap');
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    :root {
-      --primary-cyan: #00ffff;
-      --primary-magenta: #ff00ff;
-      --primary-red: #c94444;
-      --accent-gold: #ffd700;
-      --accent-purple: #9d4edd;
-      --dark-bg: #0a0a0a;
-      --glass-bg: rgba(255, 255, 255, 0.08);
-      --glass-border: rgba(255, 255, 255, 0.15);
-      --neu-shadow-light: rgba(255, 255, 255, 0.1);
-      --neu-shadow-dark: rgba(0, 0, 0, 0.5);
-    }
-
-    html {
-      scroll-behavior: smooth;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    body {
-      font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: var(--dark-bg);
-      color: white;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    /* Background Animation */
-    body::before {
-      content: '';
-      position: fixed;
-      width: 200%;
-      height: 200%;
-      top: -50%;
-      left: -50%;
-      z-index: 0;
-      background:
-        radial-gradient(ellipse at 20% 30%, rgba(157, 78, 221, 0.1) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 70%, rgba(201, 68, 68, 0.08) 0%, transparent 50%),
-        radial-gradient(ellipse at 50% 50%, rgba(0, 255, 255, 0.06) 0%, transparent 60%),
-        linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 25%, #0a0a1a 50%, #0a1a1a 75%, #0a0a0a 100%);
-      animation: gradientShift 30s ease infinite;
-      will-change: transform;
-      filter: blur(40px);
-    }
-
-    body::after {
-      content: '';
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      z-index: 0;
-      background:
-        radial-gradient(circle at 10% 20%, rgba(255, 215, 0, 0.03) 0%, transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(255, 0, 255, 0.04) 0%, transparent 40%);
-      pointer-events: none;
-      animation: pulseGlow 10s ease-in-out infinite;
-    }
-
-    @keyframes gradientShift {
-
-      0%,
-      100% {
-        transform: translate(0, 0) rotate(0deg);
-      }
-
-      50% {
-        transform: translate(-5%, -5%) rotate(180deg);
-      }
-    }
-
-    @keyframes pulseGlow {
-
-      0%,
-      100% {
-        opacity: 0.3;
-      }
-
-      50% {
-        opacity: 0.6;
-      }
-    }
-
-    /* Navigation */
-    .top-nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: clamp(15px, 2vh, 25px) clamp(20px, 4vw, 60px);
-      background: rgba(10, 10, 10, 0.7);
-      backdrop-filter: blur(15px);
-      border-bottom: 1px solid var(--glass-border);
-      transition: all 0.3s ease;
-    }
-
-    .top-nav.scrolled {
-      background: rgba(10, 10, 10, 0.95);
-      box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
-    }
-
-    .brand-section {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .brand-logo {
-      font-size: clamp(22px, 3vw, 32px);
-      font-weight: 800;
-      text-transform: lowercase;
-      background: linear-gradient(135deg, var(--primary-cyan), var(--primary-magenta));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      letter-spacing: -1px;
-    }
-
-    .brand-tagline {
-      font-size: clamp(9px, 1vw, 11px);
-      color: rgba(255, 255, 255, 0.7);
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      font-weight: 500;
-    }
-
-    .nav-links {
-      display: flex;
-      list-style: none;
-      gap: clamp(20px, 3vw, 40px);
-    }
-
-    .nav-link {
-      color: rgba(255, 255, 255, 0.85);
-      text-decoration: none;
-      font-size: clamp(14px, 1.2vw, 16px);
-      font-weight: 500;
-      transition: all 0.3s ease;
-      position: relative;
-    }
-
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--primary-cyan), var(--primary-magenta));
-      transition: width 0.3s ease;
-    }
-
-    .nav-link:hover {
-      color: white;
-    }
-
-    .nav-link:hover::after {
-      width: 100%;
-    }
-
-    .nav-actions {
-      display: flex;
-      gap: clamp(15px, 2vw, 25px);
-      font-size: clamp(18px, 2vw, 22px);
-    }
-
-    .nav-icon {
-      cursor: pointer;
-      transition: transform 0.3s ease;
-      position: relative;
-    }
-
-    .nav-icon:hover {
-      transform: scale(1.15);
-    }
-
-    /* Mobile Menu Toggle */
-    .mobile-menu-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-    }
-
-    .mobile-menu-toggle span {
-      width: 25px;
-      height: 2px;
-      background: white;
-      transition: all 0.3s ease;
-    }
-
-    /* Main Container */
-    .main-container {
-      position: relative;
-      z-index: 1;
-      padding-top: 100px;
-      min-height: 100vh;
-    }
-
-    /* Product Container */
-    .product-container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: clamp(30px, 5vw, 60px) clamp(20px, 4vw, 60px);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(40px, 6vw, 80px);
-      align-items: start;
-    }
-
-    /* 3D Model Viewer Section */
-    .model-viewer-section {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      position: sticky;
-      top: 120px;
-    }
-
-    .model-viewer-container {
-      width: 100%;
-      aspect-ratio: 1;
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(15px);
-      border: 1px solid var(--glass-border);
-      border-radius: 24px;
-      overflow: hidden;
-      position: relative;
-      box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    }
-
-    #product-canvas {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-
-    .model-loading {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      z-index: 10;
-    }
-
-    .loading-spinner {
-      width: 60px;
-      height: 60px;
-      border: 4px solid rgba(255, 255, 255, 0.1);
-      border-top-color: var(--primary-cyan);
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      margin: 0 auto 15px;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    .loading-text {
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 14px;
-      font-weight: 500;
-    }
-
-    .model-controls {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      padding: 15px;
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--glass-border);
-      border-radius: 16px;
-    }
-
-    .control-btn {
-      padding: 10px 20px;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--glass-border);
-      border-radius: 10px;
-      color: white;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .control-btn:hover {
-      background: rgba(0, 255, 255, 0.1);
-      border-color: var(--primary-cyan);
-      transform: translateY(-2px);
-    }
-
-    .control-btn.active {
-      background: rgba(0, 255, 255, 0.2);
-      border-color: var(--primary-cyan);
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-    }
-
-    .scroll-hint {
-      text-align: center;
-      padding: 15px;
-      background: rgba(255, 215, 0, 0.1);
-      border: 1px solid rgba(255, 215, 0, 0.3);
-      border-radius: 12px;
-      font-size: 13px;
-      color: rgba(255, 215, 0, 0.9);
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    .scroll-hint::before {
-      content: '⬇️';
-      animation: bounce 2s infinite;
-    }
-
-    @keyframes bounce {
-
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-5px);
-      }
-    }
-
-    /* Product Info */
-    .product-info {
-      display: flex;
-      flex-direction: column;
-      gap: clamp(20px, 3vh, 30px);
-    }
-
-    .breadcrumb {
-      font-size: 14px;
-      color: rgba(255, 255, 255, 0.6);
-      display: flex;
-      gap: 8px;
-      align-items: center;
-    }
-
-    .breadcrumb a {
-      color: rgba(255, 255, 255, 0.6);
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    .breadcrumb a:hover {
-      color: var(--primary-cyan);
-    }
-
-    .product-title {
-      font-size: clamp(32px, 5vw, 48px);
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: -1px;
-      background: linear-gradient(135deg, white, var(--accent-gold));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      line-height: 1.2;
-    }
-
-    .product-price {
-      font-size: clamp(36px, 5vw, 48px);
-      font-weight: 700;
-      color: var(--accent-gold);
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .original-price {
-      font-size: clamp(20px, 2.5vw, 28px);
-      color: rgba(255, 255, 255, 0.4);
-      text-decoration: line-through;
-      font-weight: 500;
-    }
-
-    .discount-badge {
-      background: linear-gradient(135deg, var(--primary-red), var(--primary-magenta));
-      padding: 6px 12px;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 600;
-      color: white;
-    }
-
-    .rating-section {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .stars {
-      color: var(--accent-gold);
-      font-size: 18px;
-      letter-spacing: 2px;
-    }
-
-    .rating-text {
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 14px;
-    }
-
-    .product-description {
-      font-size: clamp(15px, 1.5vw, 17px);
-      color: rgba(255, 255, 255, 0.8);
-      line-height: 1.8;
-    }
-
-    /* Size Selector */
-    .size-selector {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .size-label {
-      font-size: 16px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .size-options {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .size-option {
-      padding: 12px 24px;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      border: 2px solid var(--glass-border);
-      border-radius: 12px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-weight: 600;
-      min-width: 60px;
-      text-align: center;
-    }
-
-    .size-option:hover {
-      border-color: var(--primary-cyan);
-      background: rgba(0, 255, 255, 0.1);
-    }
-
-    .size-option.active {
-      border-color: var(--primary-cyan);
-      background: rgba(0, 255, 255, 0.2);
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-    }
-
-    /* Quantity Selector */
-    .quantity-selector {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .quantity-label {
-      font-size: 16px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .quantity-controls {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--glass-border);
-      border-radius: 12px;
-      padding: 8px 15px;
-    }
-
-    .quantity-btn {
-      background: none;
-      border: none;
-      color: white;
-      font-size: 24px;
-      cursor: pointer;
-      padding: 5px 10px;
-      transition: all 0.3s ease;
-      line-height: 1;
-    }
-
-    .quantity-btn:hover {
-      color: var(--primary-cyan);
-      transform: scale(1.2);
-    }
-
-    .quantity-value {
-      font-size: 18px;
-      font-weight: 600;
-      min-width: 30px;
-      text-align: center;
-    }
-
-    /* Action Buttons */
-    .action-buttons {
-      display: flex;
-      gap: 15px;
-      margin-top: 10px;
-    }
-
-    .btn {
-      flex: 1;
-      padding: 18px 32px;
-      font-size: clamp(16px, 1.5vw, 18px);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      border: none;
-      border-radius: 16px;
-      cursor: pointer;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--primary-cyan), var(--primary-magenta));
-      color: white;
-      box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
-    }
-
-    .btn-primary::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.3);
-      transform: translate(-50%, -50%);
-      transition: width 0.6s, height 0.6s;
-    }
-
-    .btn-primary:hover::before {
-      width: 300px;
-      height: 300px;
-    }
-
-    .btn-primary:hover {
-      box-shadow: 0 15px 40px rgba(0, 255, 255, 0.5);
-      transform: translateY(-2px);
-    }
-
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      border: 2px solid var(--glass-border);
-      color: white;
-    }
-
-    .btn-secondary:hover {
-      border-color: var(--primary-cyan);
-      background: rgba(0, 255, 255, 0.1);
-      transform: translateY(-2px);
-    }
-
-    /* Product Features */
-    .product-features {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-      padding: 30px;
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--glass-border);
-      border-radius: 16px;
-    }
-
-    .feature-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 14px;
-      color: rgba(255, 255, 255, 0.8);
-    }
-
-    .feature-icon {
-      font-size: 20px;
-    }
-
-    /* Product Details Accordion */
-    .product-details-section {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      margin-top: 20px;
-    }
-
-    .detail-accordion {
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--glass-border);
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    .accordion-header {
-      padding: 20px;
-      font-size: 16px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: background 0.3s ease;
-    }
-
-    .accordion-header:hover {
-      background: rgba(255, 255, 255, 0.05);
-    }
-
-    .accordion-icon {
-      transition: transform 0.3s ease;
-    }
-
-    .accordion-header.active .accordion-icon {
-      transform: rotate(180deg);
-    }
-
-    .accordion-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease;
-    }
-
-    .accordion-content.active {
-      max-height: 500px;
-    }
-
-    .accordion-body {
-      padding: 20px;
-      font-size: 15px;
-      color: rgba(255, 255, 255, 0.8);
-      line-height: 1.8;
-      border-top: 1px solid var(--glass-border);
-    }
-
-    /* Responsive Design */
-    @media (max-width: 968px) {
-      .product-container {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-
-      .model-viewer-section {
-        position: static;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .mobile-menu-toggle {
-        display: flex;
-      }
-
-      .action-buttons {
-        flex-direction: column;
-      }
-
-      .product-features {
-        grid-template-columns: 1fr;
-      }
-
-      .model-controls {
-        flex-wrap: wrap;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="Batman Verse Tshirt - Premium Telugu Cinema Merchandise | tfi Zindabad">
+    <meta name="theme-color" content="#0a0a0a">
+    <title>Batman Verse Tshirt | tfi Zindabad</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        :root {
+            --primary-cyan: #00ffff;
+            --primary-magenta: #ff00ff;
+            --primary-red: #c94444;
+            --accent-gold: #ffd700;
+            --dark-bg: #0a0a0a;
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.15);
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            width: 100%;
+            min-height: 400vh; /* Scrollable height */
+            overflow-x: hidden;
+            overflow-y: auto;
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--dark-bg);
+            color: white;
+        }
+        
+        /* Fullscreen Canvas - Fixed */
+        #product-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 1;
+        }
+        
+        /* Scroll Container */
+        .scroll-container {
+            position: relative;
+            z-index: 10;
+            min-height: 400vh;
+        }
+        
+        /* Top Navigation */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 40px;
+            background: linear-gradient(180deg, rgba(10, 10, 10, 0.9) 0%, transparent 100%);
+            backdrop-filter: blur(20px);
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .brand-logo {
+            font-size: 28px;
+            font-weight: 800;
+            text-transform: lowercase;
+            background: linear-gradient(135deg, var(--primary-cyan), var(--primary-magenta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+        
+        .nav-actions {
+            display: flex;
+            gap: 20px;
+            font-size: 22px;
+        }
+        
+        .nav-icon {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-icon:hover {
+            transform: scale(1.2);
+        }
+        
+        /* Hero Section - Initial View */
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            pointer-events: none;
+        }
+        
+        .hero-title {
+            font-size: clamp(48px, 8vw, 96px);
+            font-weight: 800;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, white, var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(16px, 2vw, 24px);
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 40px;
+            animation: fadeInUp 1.2s ease-out;
+        }
+        
+        .scroll-indicator {
+            font-size: 14px;
+            color: var(--primary-cyan);
+            animation: bounce 2s infinite;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        /* Floating Cards Container */
+        .cards-container {
+            position: relative;
+            min-height: 300vh;
+            pointer-events: none;
+        }
+        
+        .cards-container > * {
+            pointer-events: auto;
+        }
+        
+        /* Floating Card Base */
+        .floating-card {
+            position: absolute;
+            background: rgba(10, 10, 20, 0.85);
+            backdrop-filter: blur(25px) saturate(180%);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.6),
+                0 0 40px rgba(0, 255, 255, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            opacity: 0;
+            transform: translateY(60px) scale(0.95);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, opacity;
+        }
+        
+        .floating-card.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        
+        .floating-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: rgba(0, 255, 255, 0.6);
+            box-shadow: 
+                0 25px 70px rgba(0, 0, 0, 0.7),
+                0 0 60px rgba(0, 255, 255, 0.3);
+        }
+        
+        /* Card Positioning - Staggered Layout */
+        .product-info-card {
+            top: 120vh;
+            left: 5%;
+            max-width: min(400px, 90%);
+            transition-delay: 0s;
+        }
+        
+        .price-card {
+            top: 140vh;
+            right: 5%;
+            max-width: min(350px, 90%);
+            transition-delay: 0.1s;
+        }
+        
+        .size-card {
+            top: 170vh;
+            left: 5%;
+            max-width: min(380px, 90%);
+            transition-delay: 0.2s;
+        }
+        
+        .quantity-card {
+            top: 200vh;
+            right: 5%;
+            max-width: min(300px, 90%);
+            transition-delay: 0.3s;
+        }
+        
+        .features-card {
+            top: 230vh;
+            left: 5%;
+            max-width: min(360px, 90%);
+            transition-delay: 0.4s;
+        }
+        
+        .actions-card {
+            top: 270vh;
+            left: 50%;
+            transform: translateX(-50%) translateY(60px) scale(0.95);
+            max-width: min(500px, 90%);
+            transition-delay: 0.5s;
+        }
+        
+        .actions-card.visible {
+            transform: translateX(-50%) translateY(0) scale(1);
+        }
+        
+        .actions-card:hover {
+            transform: translateX(-50%) translateY(-5px) scale(1.02);
+        }
+        
+        .details-card {
+            top: 320vh;
+            right: 5%;
+            max-width: min(380px, 90%);
+            transition-delay: 0.6s;
+        }
+        
+        .controls-card {
+            top: 360vh;
+            left: 50%;
+            transform: translateX(-50%) translateY(60px) scale(0.95);
+            max-width: min(400px, 90%);
+            transition-delay: 0.7s;
+        }
+        
+        .controls-card.visible {
+            transform: translateX(-50%) translateY(0) scale(1);
+        }
+        
+        .controls-card:hover {
+            transform: translateX(-50%) translateY(-5px) scale(1.02);
+        }
+        
+        /* Card Content Styles */
+        .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            color: var(--primary-cyan);
+        }
+        
+        .product-title {
+            font-size: clamp(28px, 4vw, 36px);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, white, var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        
+        .rating-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .stars {
+            color: var(--accent-gold);
+            font-size: 16px;
+            letter-spacing: 2px;
+        }
+        
+        .rating-text {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 13px;
+        }
+        
+        .product-description {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+        }
+        
+        .product-price {
+            font-size: clamp(36px, 5vw, 48px);
+            font-weight: 700;
+            color: var(--accent-gold);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .original-price {
+            font-size: clamp(20px, 2.5vw, 28px);
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: line-through;
+            font-weight: 500;
+        }
+        
+        .discount-badge {
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-magenta));
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            color: white;
+        }
+        
+        /* Size Selector */
+        .size-options {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+        }
+        
+        .size-option {
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 15px;
+        }
+        
+        .size-option:hover {
+            border-color: var(--primary-cyan);
+            background: rgba(0, 255, 255, 0.1);
+            transform: scale(1.05);
+        }
+        
+        .size-option.active {
+            border-color: var(--primary-cyan);
+            background: rgba(0, 255, 255, 0.2);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+        }
+        
+        /* Quantity Controls */
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .quantity-btn {
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 255, 255, 0.1);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 12px;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 300;
+        }
+        
+        .quantity-btn:hover {
+            background: rgba(0, 255, 255, 0.2);
+            border-color: var(--primary-cyan);
+            transform: scale(1.1);
+        }
+        
+        .quantity-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: white;
+            min-width: 60px;
+            text-align: center;
+        }
+        
+        /* Features */
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .feature-item:last-child {
+            border-bottom: none;
+        }
+        
+        .feature-icon {
+            font-size: 20px;
+        }
+        
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            width: 100%;
+        }
+        
+        .btn-3d {
+            flex: 1;
+            padding: 18px 32px;
+            font-size: clamp(14px, 2vw, 16px);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        .btn-3d::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .btn-3d:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-cyan), var(--primary-magenta));
+            color: white;
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.4);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 255, 255, 0.6);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--primary-cyan);
+            transform: translateY(-3px);
+        }
+        
+        /* Accordion */
+        .detail-accordion {
+            margin-bottom: 12px;
+        }
+        
+        .accordion-header {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .accordion-header:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--primary-cyan);
+        }
+        
+        .accordion-icon {
+            transition: transform 0.3s ease;
+            font-size: 12px;
+        }
+        
+        .accordion-header.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+        
+        .accordion-content.active {
+            max-height: 300px;
+        }
+        
+        .accordion-body {
+            padding: 15px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 0 0 12px 12px;
+            margin-top: 5px;
+        }
+        
+        .accordion-body p {
+            margin: 5px 0;
+        }
+        
+        /* Control Buttons */
+        .model-controls {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .control-btn {
+            flex: 1;
+            padding: 16px 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 12px;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .control-btn:hover {
+            background: rgba(0, 255, 255, 0.1);
+            border-color: var(--primary-cyan);
+            transform: translateY(-2px);
+        }
+        
+        .control-btn.active {
+            background: rgba(0, 255, 255, 0.2);
+            border-color: var(--primary-cyan);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+        
+        /* Loading Indicator */
+        .model-loading {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 1000;
+        }
+        
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-top-color: var(--primary-cyan);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .loading-text {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            body {
+                min-height: 500vh;
+            }
+            
+            .top-nav {
+                padding: 15px 20px;
+            }
+            
+            .brand-logo {
+                font-size: 22px;
+            }
+            
+            .nav-actions {
+                gap: 15px;
+                font-size: 18px;
+            }
+            
+            .hero-title {
+                font-size: clamp(36px, 10vw, 56px);
+            }
+            
+            .floating-card {
+                left: 50% !important;
+                right: auto !important;
+                transform: translateX(-50%) translateY(60px) scale(0.95);
+                max-width: 90% !important;
+            }
+            
+            .floating-card.visible {
+                transform: translateX(-50%) translateY(0) scale(1);
+            }
+            
+            .floating-card:hover {
+                transform: translateX(-50%) translateY(-5px) scale(1.02);
+            }
+            
+            .product-info-card { top: 110vh; }
+            .price-card { top: 130vh; }
+            .size-card { top: 155vh; }
+            .quantity-card { top: 180vh; }
+            .features-card { top: 210vh; }
+            .actions-card { top: 250vh; }
+            .details-card { top: 290vh; }
+            .controls-card { top: 340vh; }
+            
+            .size-options {
+                grid-template-columns: repeat(5, 1fr);
+                gap: 8px;
+            }
+            
+            .size-option {
+                padding: 10px 8px;
+                font-size: 13px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .controls-card,
+            .actions-card {
+                left: 50% !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .quantity-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+            
+            .quantity-value {
+                font-size: 28px;
+            }
+            
+            .model-controls {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
-
 <body>
-  <!-- Navigation -->
-  <nav class="top-nav">
-    <div class="brand-section">
-      <div class="brand-logo">tfi Zindabad</div>
-      <div class="brand-tagline">For The Fans. By The Fans.</div>
+    <!-- Fullscreen 3D Canvas -->
+    <canvas id="product-canvas"></canvas>
+
+    <!-- Loading Indicator -->
+    <div class="model-loading" id="modelLoading">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Loading 3D Model...</div>
     </div>
 
-    <div class="mobile-menu-toggle" aria-label="Menu">
-      <span></span>
-      <span></span>
-      <span></span>
+    <!-- Scroll Container -->
+    <div class="scroll-container">
+        <!-- Top Navigation -->
+        <nav class="top-nav">
+            <div class="brand-logo">tfi Zindabad</div>
+            <div class="nav-actions">
+                <span class="nav-icon" role="button" aria-label="Search">🔍</span>
+                <span class="nav-icon" role="button" aria-label="Cart">🛒</span>
+                <span class="nav-icon" role="button" aria-label="Account">👤</span>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <h1 class="hero-title">Batman Verse</h1>
+            <p class="hero-subtitle">Experience in 3D</p>
+            <div class="scroll-indicator">
+                <span>Scroll to explore</span>
+                <span style="font-size: 24px;">↓</span>
+            </div>
+        </div>
+
+        <!-- Floating Cards Container -->
+        <div class="cards-container">
+            <!-- Product Info Card -->
+            <div class="floating-card product-info-card" data-card>
+                <h2 class="product-title">Batman Verse Tshirt</h2>
+                
+                <div class="rating-section">
+                    <div class="stars">★★★★★</div>
+                    <span class="rating-text">4.8/5 (127 reviews)</span>
+                </div>
+
+                <p class="product-description">
+                    Premium quality t-shirt celebrating Telugu cinema. Made from 100% organic cotton with exclusive artwork. Perfect for movie premieres and fan gatherings.
+                </p>
+            </div>
+
+            <!-- Price Card -->
+            <div class="floating-card price-card" data-card>
+                <div class="card-title">Price</div>
+                <div class="product-price">
+                    <span>₹599</span>
+                    <span class="original-price">₹999</span>
+                    <span class="discount-badge">40% OFF</span>
+                </div>
+            </div>
+
+            <!-- Size Selector Card -->
+            <div class="floating-card size-card" data-card>
+                <div class="card-title">Select Size</div>
+                <div class="size-options">
+                    <div class="size-option" data-size="S">S</div>
+                    <div class="size-option active" data-size="M">M</div>
+                    <div class="size-option" data-size="L">L</div>
+                    <div class="size-option" data-size="XL">XL</div>
+                    <div class="size-option" data-size="XXL">XXL</div>
+                </div>
+            </div>
+
+            <!-- Quantity Card -->
+            <div class="floating-card quantity-card" data-card>
+                <div class="card-title">Quantity</div>
+                <div class="quantity-controls">
+                    <button class="quantity-btn" id="decreaseQty">−</button>
+                    <span class="quantity-value" id="quantityValue">1</span>
+                    <button class="quantity-btn" id="increaseQty">+</button>
+                </div>
+            </div>
+
+            <!-- Features Card -->
+            <div class="floating-card features-card" data-card>
+                <div class="card-title">Product Features</div>
+                <div class="feature-item">
+                    <span class="feature-icon">✓</span>
+                    <span>100% Organic Cotton</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">✓</span>
+                    <span>Premium Quality Print</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">✓</span>
+                    <span>Pre-shrunk Fabric</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🚚</span>
+                    <span>Free Shipping</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">↩️</span>
+                    <span>7-Day Easy Returns</span>
+                </div>
+            </div>
+
+            <!-- Action Buttons Card -->
+            <div class="floating-card actions-card" data-card>
+                <div class="action-buttons">
+                    <button class="btn-3d btn-primary" id="addToCart">
+                        <span>🛒 Add to Cart</span>
+                    </button>
+                    <button class="btn-3d btn-secondary" id="buyNow">
+                        <span>⚡ Buy Now</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product Details Card -->
+            <div class="floating-card details-card" data-card>
+                <div class="card-title">Product Details</div>
+                
+                <div class="detail-accordion">
+                    <div class="accordion-header" data-accordion="details">
+                        <span>Specifications</span>
+                        <span class="accordion-icon">▼</span>
+                    </div>
+                    <div class="accordion-content" data-content="details">
+                        <div class="accordion-body">
+                            <p><strong>Material:</strong> 100% Organic Cotton</p>
+                            <p><strong>Fit:</strong> Regular fit</p>
+                            <p><strong>GSM:</strong> 180</p>
+                            <p><strong>Print:</strong> DTG printing</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-accordion">
+                    <div class="accordion-header" data-accordion="shipping">
+                        <span>Shipping</span>
+                        <span class="accordion-icon">▼</span>
+                    </div>
+                    <div class="accordion-content" data-content="shipping">
+                        <div class="accordion-body">
+                            <p>• Free shipping on all orders</p>
+                            <p>• Delivery: 3-5 business days</p>
+                            <p>• Cash on delivery available</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Control Buttons Card -->
+            <div class="floating-card controls-card" data-card>
+                <div class="card-title">3D Controls</div>
+                <div class="model-controls">
+                    <button class="control-btn active" id="autoRotateBtn">
+                        <span>🔄</span>
+                        <span>Auto Rotate</span>
+                    </button>
+                    <button class="control-btn" id="resetViewBtn">
+                        <span>⟲</span>
+                        <span>Reset View</span>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <ul class="nav-links">
-      <li><a href="index.html" class="nav-link">Home</a></li>
-      <li><a href="#collections" class="nav-link">Collections</a></li>
-      <li><a href="#fanverse" class="nav-link">Fanverse</a></li>
-      <li><a href="#lifeverse" class="nav-link">Lifeverse</a></li>
-      <li><a href="#ar" class="nav-link">Try AR</a></li>
-    </ul>
-
-    <div class="nav-actions">
-      <span class="nav-icon" role="button" aria-label="Search">🔍</span>
-      <span class="nav-icon" role="button" aria-label="Cart">🛒</span>
-      <span class="nav-icon" role="button" aria-label="Account">👤</span>
-    </div>
-  </nav>
-
-  <!-- Main Container -->
-  <div class="main-container">
-    <div class="product-container">
-      <!-- 3D Model Viewer Section -->
-      <div class="model-viewer-section">
-        <div class="model-viewer-container">
-          <div class="model-loading" id="modelLoading">
-            <div class="loading-spinner"></div>
-            <div class="loading-text">Loading 3D Model...</div>
-          </div>
-          <canvas id="product-canvas"></canvas>
-        </div>
-
-        <div class="scroll-hint" id="scrollHint">
-          Scroll to rotate the model
-        </div>
-
-        <div class="model-controls">
-          <button class="control-btn active" id="autoRotateBtn">
-            <span>🔄</span>
-            <span>Auto Rotate</span>
-          </button>
-          <button class="control-btn" id="resetViewBtn">
-            <span>↺</span>
-            <span>Reset View</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- Product Info -->
-      <div class="product-info">
-        <div class="breadcrumb">
-          <a href="index.html">Home</a>
-          <span>›</span>
-          <a href="#collections">Collections</a>
-          <span>›</span>
-          <span>Fanverse Tee</span>
-        </div>
-
-        <h1 class="product-title">Batman Verse Tshirt</h1>
-
-        <div class="rating-section">
-          <div class="stars">★★★★★</div>
-          <span class="rating-text">(4.8/5 from 127 reviews)</span>
-        </div>
-
-        <div class="product-price">
-          <span>₹599</span>
-          <span class="original-price">₹999</span>
-          <span class="discount-badge">40% OFF</span>
-        </div>
-
-        <p class="product-description">
-          Celebrate your love for Telugu cinema with this premium quality t-shirt. Made from 100% organic cotton,
-          featuring exclusive artwork that showcases your fandom. Perfect for movie premieres, fan gatherings, or
-          everyday wear.
-        </p>
-
-        <!-- Size Selector -->
-        <div class="size-selector">
-          <div class="size-label">Select Size</div>
-          <div class="size-options">
-            <div class="size-option" data-size="S">S</div>
-            <div class="size-option active" data-size="M">M</div>
-            <div class="size-option" data-size="L">L</div>
-            <div class="size-option" data-size="XL">XL</div>
-            <div class="size-option" data-size="XXL">XXL</div>
-          </div>
-        </div>
-
-        <!-- Quantity Selector -->
-        <div class="quantity-selector">
-          <span class="quantity-label">Quantity</span>
-          <div class="quantity-controls">
-            <button class="quantity-btn" id="decreaseQty">−</button>
-            <span class="quantity-value" id="quantityValue">1</span>
-            <button class="quantity-btn" id="increaseQty">+</button>
-          </div>
-        </div>
-
-        <!-- Action Buttons -->
-        <div class="action-buttons">
-          <button class="btn btn-primary" id="addToCart">
-            <span>Add to Cart</span>
-          </button>
-          <button class="btn btn-secondary" id="buyNow">
-            <span>Buy Now</span>
-          </button>
-        </div>
-
-        <!-- Product Features -->
-        <div class="product-features">
-          <div class="feature-item">
-            <span class="feature-icon">✓</span>
-            <span>100% Organic Cotton</span>
-          </div>
-          <div class="feature-item">
-            <span class="feature-icon">✓</span>
-            <span>Premium Quality Print</span>
-          </div>
-          <div class="feature-item">
-            <span class="feature-icon">✓</span>
-            <span>Pre-shrunk Fabric</span>
-          </div>
-          <div class="feature-item">
-            <span class="feature-icon">✓</span>
-            <span>Machine Washable</span>
-          </div>
-          <div class="feature-item">
-            <span class="feature-icon">🚚</span>
-            <span>Free Shipping</span>
-          </div>
-          <div class="feature-item">
-            <span class="feature-icon">↩️</span>
-            <span>7-Day Easy Returns</span>
-          </div>
-        </div>
-
-        <!-- Product Details Accordion -->
-        <div class="product-details-section">
-          <div class="detail-accordion">
-            <div class="accordion-header" data-accordion="details">
-              <span>Product Details</span>
-              <span class="accordion-icon">▼</span>
-            </div>
-            <div class="accordion-content" data-content="details">
-              <div class="accordion-body">
-                <p><strong>Material:</strong> 100% Organic Cotton</p>
-                <p><strong>Fit:</strong> Regular fit</p>
-                <p><strong>Neck:</strong> Round neck</p>
-                <p><strong>Sleeve:</strong> Half sleeve</p>
-                <p><strong>GSM:</strong> 180</p>
-                <p><strong>Print:</strong> High-quality DTG printing</p>
-                <p><strong>Care:</strong> Machine wash cold, tumble dry low</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="detail-accordion">
-            <div class="accordion-header" data-accordion="shipping">
-              <span>Shipping & Delivery</span>
-              <span class="accordion-icon">▼</span>
-            </div>
-            <div class="accordion-content" data-content="shipping">
-              <div class="accordion-body">
-                <p>• Free shipping on all orders</p>
-                <p>• Estimated delivery: 3-5 business days</p>
-                <p>• Cash on delivery available</p>
-                <p>• Order tracking provided</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="detail-accordion">
-            <div class="accordion-header" data-accordion="returns">
-              <span>Returns & Exchange</span>
-              <span class="accordion-icon">▼</span>
-            </div>
-            <div class="accordion-content" data-content="returns">
-              <div class="accordion-body">
-                <p>• Easy 7-day return policy</p>
-                <p>• Free size exchange available</p>
-                <p>• Full refund if not satisfied</p>
-                <p>• No questions asked</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script type="importmap">
-  {
-    "imports": {
-      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
-      "three/examples/jsm/loaders/GLTFLoader.js": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/loaders/GLTFLoader.js",
-      "three/examples/jsm/postprocessing/EffectComposer.js": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/postprocessing/EffectComposer.js",
-      "three/examples/jsm/postprocessing/RenderPass.js": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/postprocessing/RenderPass.js",
-      "three/examples/jsm/postprocessing/UnrealBloomPass.js": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/postprocessing/UnrealBloomPass.js"
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+            "three/examples/jsm/loaders/GLTFLoader.js": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/loaders/GLTFLoader.js",
+            "three/examples/jsm/postprocessing/EffectComposer.js": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/postprocessing/EffectComposer.js",
+            "three/examples/jsm/postprocessing/RenderPass.js": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/postprocessing/RenderPass.js",
+            "three/examples/jsm/postprocessing/UnrealBloomPass.js": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/postprocessing/UnrealBloomPass.js"
+        }
     }
-  }
-  </script>
-  <script type="module" src="product.js"></script>
-</body>
+    </script>
 
+    <script type="module" src="product.js"></script>
+</body>
 </html>
